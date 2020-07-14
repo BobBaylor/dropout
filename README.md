@@ -13,9 +13,9 @@ Now that I have two ISPs running into the house, I would like to compare their d
 Not if you already have python installed. It doesn't use any libraries beyond the standard lib. Install python from https://www.python.org/downloads/
 
 Then clone this repo, open a terminal or DOS window and run it
-{
+```
 python dropout.py
-}
+```
 
 that's it. 
 
