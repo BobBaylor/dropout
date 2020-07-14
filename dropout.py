@@ -4,6 +4,7 @@
 import socket
 import time
 from random import random
+from itertools import cycle
 
 def socket_to_host(host="8.8.8.8", port=53, timeout=3):
     """ Attempt to open a socket.
@@ -32,13 +33,14 @@ TICKER = '|/-\\'
 
 if __name__ == '__main__':
     print(f'{__file__} starting at {str_now()}')
-    i, j = 0, 0
+
+    ticks = cycle(TICKER)   # circular list of spinning line characters
+    host_ips = cycle(HOST_IPS)  # circular list of ip addresses
     while True:
-        i, j = i+1, j+1
-        i, j = i % len(HOST_IPS), j % len(TICKER)
-        b_good, e_str = socket_to_host(HOST_IPS[i])
+        a_host = next(host_ips)
+        b_good, e_str = socket_to_host(a_host)
         if not b_good:
-            print(f'FAILED at {str_now()} to {HOST_IPS[i]} {e_str}')
+            print(f'FAILED at {str_now()} to {a_host} {e_str}')
         else:
-            print(TICKER[j]+'\r', end=' ', flush=True)
+            print(next(ticks)+'\r', end=' ', flush=True)
         time.sleep(2 + random() * 2)
