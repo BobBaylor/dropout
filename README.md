@@ -20,3 +20,6 @@ python dropout.py
 that's it. 
 
 It will print a signon date & time. Then it will slowly spin until it detects a dropout. Dropouts will show a date, time, and details of the dropout.
+
+## It doesn't work. I hate you!
+dropout uses f-strings so it won't work with python older than 3.6, I think. Feel free to contact me. Don't be surprised if I don't respond. 
